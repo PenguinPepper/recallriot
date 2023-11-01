@@ -11,7 +11,3 @@ class User(BaseModel):
     first_name = db.StringField(max_length=128, required=True)
     last_name = db.StringField(max_length=128, required=True)
 
-    def __repr__(self):
-        return f"<User(username={self.username}, email={self.email}, first_name={self.first_name}, last_name={self.last_name})>"
-
-
