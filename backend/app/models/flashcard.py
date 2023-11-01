@@ -8,7 +8,3 @@ class Flashcard(BaseModel):
     word = db.StringField(max_length=128, required=True)
     definition = db.StringField(max_length=512, required=True)
     picture = db.StringField(max_length=256)
-
-    def __repr__(self):
-        return f"<Flashcard(word={self.word}, definition={self.definition})>"
-
