@@ -1,0 +1,49 @@
+swagger: "2.0"
+info:
+  title: "Flashcard API"
+  description: "API to manage flashcards"
+  version: "1.0"
+host: "localhost:5000"  # Update with your actual host
+basePath: "/api"
+schemes:
+  - "http"
+  - "https"
+paths:
+  /flashcards:
+    post:
+      tags:
+        - "flashcards"
+      summary: "Create a new flashcard"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "header"
+          name: "Authorization"
+          type: "string"
+          required: true
+          description: "A valid JWT token."
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              word:
+                type: "string"
+                example: "Example Word"
+              definition:
+                type: "string"
+                example: "Example Definition"
+              picture:
+                type: "string"
+                example: "URL or Base64 Encoded Image (optional)"
+      responses:
+        201:
+          description: "Flashcard successfully created."
+        400:
+          description: "Invalid request format."
+        500:
+          description: "Server error."
+
