@@ -5,10 +5,12 @@ import datetime
 app = Flask(__name__)
 app.config["MONGODB_SETTINGS"] = {
     "db": "flashcarddb",
-    "host": "mongodb://localhost:7000/flashcarddb"
+    "host": "mongodb://localhost:27017/flashcarddb"
+
 }
 db = MongoEngine(app)
 
 # Import models to ensure they are registered with the database
-from backend.app.models import user, flashcard
+from backend.app.models.user import User
+from backend.app.models.flashcard import Flashcard
 
