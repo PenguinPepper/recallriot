@@ -111,7 +111,7 @@ The server will run on port 3003.
 
 ## API Documentation
 
-Explore the API endpoints and learn how to integrate with the Blog Application by referring to our [API Documentation]().
+Explore the API endpoints and learn how to integrate with the Blog Application by referring to our [API Documentation](https://github.com/PenguinPepper/recallriot/blob/main/API_DOCUMENTANTION.MD).
 
 ## Contributing
 
