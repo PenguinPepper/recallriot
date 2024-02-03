@@ -3,6 +3,16 @@ const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
+const admin = require('firebase-admin');
+const serviceAccount = require('../service-account.json')
+const upload = require('../middlewares/upload');
+const stream = require('stream');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket: 'gs://recallriot-flashcard.appspot.com', // firebase storage updated
+});
+
 dotenv.config();
 
 // Function to generate JWT token
@@ -18,6 +28,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+
+const bucket = admin.storage().bucket();
 
 const userController = {
   // Signup
@@ -90,6 +102,68 @@ const userController = {
       res.status(500).json({ message: 'Internal Server Error' });
     }
   },
+  //upload profile picture
+  uploadProfileImage: async function (req, res) {
+  try {
+    const userId = req.user._id;
+    const file = req.file;
+
+    if (!file) {
+      return res.status(400).json({ message: 'No file uploaded.' });
+    }
+
+    const destination = `profile-images/${userId}/${file.originalname}`;
+    const uploadOptions = {
+      destination,
+      resumable: false,
+      metadata: {
+        contentType: file.mimetype,
+      },
+    };
+
+    // Create a writable stream
+    const fileStream = bucket.file(destination).createWriteStream({
+      metadata: {
+        contentType: file.mimetype,
+      },
+    });
+
+    // Pipe the buffer into the writable stream
+    fileStream.end(file.buffer);
+
+    // Wait for the upload to finish
+    await new Promise((resolve, reject) => {
+      fileStream.on('error', reject);
+      fileStream.on('finish', resolve);
+    });
+
+    // Get the signed URL
+    const [url] = await bucket.file(destination).getSignedUrl({ action: 'read', expires: '01-01-2500' });
+
+    await User.findByIdAndUpdate(userId, { profileImageUrl: url });
+
+    res.status(200).json({ message: 'Profile image uploaded successfully.', imageUrl: url });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+}, 
+   // Delete Account
+  deleteAccount: async function (req, res) {
+    try {
+      const userId = req.user._id;
+
+      // Delete the user account
+      await User.findByIdAndDelete(userId);
+
+      // Return a success message
+      res.status(200).json({ message: 'Account deleted successfully.' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  },
+ 
 };
 
 module.exports = { userController };

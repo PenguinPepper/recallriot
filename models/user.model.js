@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
     enum: ['user', 'admin'],
     default: 'user',
   },
+  profileImageUrl: {
+    type: String,
+    default: 'null',
+  },
   resetToken: String,
   resetTokenExpiration: Date,
   isVerified: {

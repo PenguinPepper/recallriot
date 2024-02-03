@@ -1,8 +1,10 @@
 const express = require('express');
 const passwordValidator = require('password-validator');
 const { userController } = require('../controllers/user.controller.js');
-
+const authMiddleware = require('../middlewares/auth.middleware');
 const router = express.Router();
+const upload = require('../middlewares/upload');
+const multer = require('multer');
 
 // Create a password schema
 const passwordSchema = new passwordValidator();
@@ -34,6 +36,10 @@ router.post('/signup', (req, res, next) => {
 
 // Login route
 router.post('/login', userController.login);
+// update profile-image-route
+router.post('/upload-profile-image', authMiddleware, upload.single('profileImage'), userController.uploadProfileImage);
+// Delete Account route
+router.delete('/delete-account', authMiddleware, userController.deleteAccount);
 
 
 module.exports = router;
