@@ -1,25 +1,27 @@
-
-const express = require ('express');
-const mongoose = require ('mongoose');
-const dotenv = require  ('dotenv');
-const cookieParser = require ('cookie-parser');
-const userRoutes = require ('./routes/user.routes.js');
-
-
-
+// server.js
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const authRoutes = require('./routes/auth');
 
 dotenv.config();
 
+// Load environment variables
+const { MONGODB_URI, PORT } = process.env;
+
+// Create Express app
 const app = express();
 
 // Middleware
-app.use(express.json());
-app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
-mongoose.connect(process.env.MONGODB_URI, {
-  //useNewUrlParser: true,
-  //useUnifiedTopology: true,
-  //useCreateIndex: true,
+// Connect to MongoDB
+mongoose.connect(MONGODB_URI, {
+  // Add your MongoDB configuration options if needed
 });
 
 const db = mongoose.connection;
@@ -30,19 +32,14 @@ db.once('open', () => {
 });
 
 // Routes
-app.use('/api/users', userRoutes);
+app.get('/', (req, res) => res.send('Hello HarmonyPlate!'));
+
+// Authentication routes
+app.use('/auth', authRoutes);
 
 
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ message: 'Internal Server Error' });
-});
-
-// Start the server
-const PORT = process.env.PORT || 3003;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// Start server
+const PORT_NUMBER = PORT || 3003; 
+app.listen(PORT_NUMBER, () => console.log(`Server running on port ${PORT_NUMBER}`));
 
