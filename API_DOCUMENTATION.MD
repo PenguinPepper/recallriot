@@ -92,6 +92,15 @@
       "imageUrl": "https://storage.googleapis.com/recallriot-flashcard.appspot.com/profile-images/example_user/1638863889821.jpg"
     }
     ```
-
+## Delete Account
+- **Delete Account**
+  - **Endpoint:** DELETE /auth/delete-account
+  - **Description:** Delete the authenticated user's account.
+  - **Response:**
+    ```json
+    {
+      "message": "Account deleted successfully."
+    }
+    ```
 
 
