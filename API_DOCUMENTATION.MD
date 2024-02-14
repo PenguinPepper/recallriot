@@ -46,6 +46,7 @@
     "token": "example_access_token"
   }
 ```
+## Forgot Password
 - **Forgot Password**
   - **Endpoint:** POST /auth/forgot-password
   - **Description:** Request a password reset.
@@ -61,6 +62,7 @@
       "message": "Password reset instructions sent to your email."
     }
     ```
+## Reset Password
 - **Reset Password**
   - **Endpoint:** POST /auth/reset-password/:token
   - **Description:** Reset the user's password.
@@ -76,8 +78,7 @@
       "message": "Password reset successful. You can now log in with your new password."
     }
     ```
-
-
+## Upload Profile Image
 - **Upload Profile Image**
   - **Endpoint:** POST /auth/upload-profile-image
   - **Description:** Upload a profile image for the authenticated user.
@@ -91,6 +92,7 @@
       "imageUrl": "https://storage.googleapis.com/recallriot-flashcard.appspot.com/profile-images/example_user/1638863889821.jpg"
     }
     ```
+## Delete Account
 - **Delete Account**
   - **Endpoint:** DELETE /auth/delete-account
   - **Description:** Delete the authenticated user's account.
@@ -100,5 +102,4 @@
       "message": "Account deleted successfully."
     }
     ```
-
 
