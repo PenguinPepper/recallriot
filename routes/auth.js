@@ -13,6 +13,7 @@ router.post('/login', authController.login);
 router.post('/forgot-password', authController.forgotPassword);
 router.post('/reset-password/:token', authController.resetPassword);
 router.post('/upload-profile-image', authMiddleware, upload.single('profileImage'), authController.uploadProfileImage);
+router.put('/update-profile', authMiddleware, authController.updateUserProfile);
 router.delete('/delete-account', authMiddleware, authController.deleteAccount);
 
 

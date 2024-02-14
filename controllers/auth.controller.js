@@ -253,6 +253,32 @@ exports.uploadProfileImage = async function(req, res) {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 };
+
+exports.updateUserProfile = async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+    const { username, email } = req.body;
+
+    // Check if the provided username or email is already taken by another user
+    const existingUser = await User.findOne({ $and: [{ _id: { $ne: userId } }, { $or: [{ username }, { email }] }] });
+    if (existingUser) {
+      return res.status(422).json({ error: 'Username or email is already taken.' });
+    }
+
+    // Update user information
+    const updatedUser = await User.findByIdAndUpdate(userId, { username, email }, { new: true });
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: 'User not found.' });
+    }
+
+    res.json({ message: 'User profile updated successfully.', user: updatedUser });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
    // Delete Account
 exports.deleteAccount = async function (req, res)  {
     try {
