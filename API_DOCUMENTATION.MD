@@ -62,6 +62,23 @@
       "message": "Password reset instructions sent to your email."
     }
     ```
+## Reset Password
+- **Reset Password**
+  - **Endpoint:** POST /auth/reset-password/:token
+  - **Description:** Reset the user's password.
+  - **Request Body:**
+    ```json
+    {
+      "newPassword": "new_example_password"
+    }
+    ```
+  - **Response:**
+    ```json
+    {
+      "message": "Password reset successful. You can now log in with your new password."
+    }
+    ```
+
 
 
 
