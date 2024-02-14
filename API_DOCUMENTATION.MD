@@ -41,11 +41,11 @@
   }
   ```
   - **Response:**
-  ```json
+  json
   {
     "token": "example_access_token"
 }
-```
+
 ## Forgot Password
 
   - **Endpoint:** POST /auth/forgot-password
