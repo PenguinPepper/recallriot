@@ -18,6 +18,7 @@
   "message": "User registered successfully. Check your email for verification."
 }
 ```
+
 ## Verify Email
 
 - **Endpoint:** `GET /auth/verify-email/:token`
@@ -75,6 +76,8 @@
       "message": "Password reset successful. You can now log in with your new password."
     }
     ```
+
+
 - **Upload Profile Image**
   - **Endpoint:** POST /auth/upload-profile-image
   - **Description:** Upload a profile image for the authenticated user.
