@@ -78,7 +78,20 @@
       "message": "Password reset successful. You can now log in with your new password."
     }
     ```
-
+## Upload Profile Image
+- **Upload Profile Image**
+  - **Endpoint:** POST /auth/upload-profile-image
+  - **Description:** Upload a profile image for the authenticated user.
+  - **Request Type:** multipart/form-data
+  - **Request Parameters:**
+    - `profileImage`: Image file
+  - **Response:**
+    ```json
+    {
+      "message": "Profile image uploaded successfully.",
+      "imageUrl": "https://storage.googleapis.com/recallriot-flashcard.appspot.com/profile-images/example_user/1638863889821.jpg"
+    }
+    ```
 
 
 
