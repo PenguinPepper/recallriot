@@ -1,18 +1,23 @@
-// models/user.model.js
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 
-const userSchema = new mongoose.Schema({
-  username: { type: String, unique: true, required: true },
-  password: { type: String, required: true },
-  email: { type: String, unique: true, required: true },
-  isVerified: { type: Boolean, default: false },
-  role: { type: String, enum: ['user', 'admin'], default: 'user' },
-  emailVerificationToken: String,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
-});
+const userSchema = new mongoose.Schema(
+  {
+    username: { type: String, unique: true, required: true },
+    password: { type: String, required: true },
+    email: { type: String, unique: true, required: true },
+    isVerified: { type: Boolean, default: false },
+    role: { type: String, enum: ['user', 'admin'], default: 'user' },
+    profileImageUrl: { type: String, default: 'null' },
+    emailVerificationToken: String,
+    passwordResetToken: String,
+    passwordResetExpires: Date,
+  },
+  {
+    timestamps: true, 
+  }
+);
 
 userSchema.pre('save', async function (next) {
   const user = this;
