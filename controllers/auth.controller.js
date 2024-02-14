@@ -208,7 +208,7 @@ exports.resetPassword = async (req, res, next) => {
 };
 
 //upload profile picture
-export.uploadProfileImage = async function (req, res) =>{
+exports.uploadProfileImage = async function(req, res) {
   try {
     const userId = req.user._id;
     const file = req.file;
@@ -254,7 +254,7 @@ export.uploadProfileImage = async function (req, res) =>{
   }
 };
    // Delete Account
-export.deleteAccount: async function (req, res) => {
+exports.deleteAccount = async function (req, res)  {
     try {
       const userId = req.user._id;
 
@@ -267,8 +267,6 @@ export.deleteAccount: async function (req, res) => {
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });
     }
-  },
-
 };
 
 
