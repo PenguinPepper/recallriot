@@ -1,6 +1,19 @@
-# Recallriot API Documentation
+# RecallRiot Flashcard API DOCUMENTATION
 
 ## Authentication Endpoints
+
+- [Introduction](#introduction)
+- [Authentication](#authentication)
+  - [Sign Up](#sign-up)
+  - [Verify Email](#verify-email)
+  - [Login](#login)
+  - [Forgot Password](#forgot-password)
+  - [Reset Password](#reset-password)
+  - [Upload Profile Image](#upload-profile-image)
+  - [Delete Account](#delete-account)
+- [Token Management](#token-management)
+  - [Token Refresh](#token-refresh)
+  - [Logout](#logout)
 
 ### Signup
 - **Endpoint:** `POST /auth/signup`
