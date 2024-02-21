@@ -1,0 +1,34 @@
+.display {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.formButon {
+
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 4em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #2a2c50;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    margin-top: 1.2em;
+}
+
+.formInput {
+    padding: 0.4em;
+    margin-bottom: 0.2em;
+}
+
+.formLabel {
+    text-align: left;
+    margin-top: 0.5em;
+}
+
+span {
+    text-align: left;
+    color: red;
+}
