@@ -21,11 +21,14 @@ const Home = () => {
     }
     return (
         <section>
-            (displayData.map(
-    (data) => {
-                <article> {data.name}</article>
-            }
-            ))
+            <button>
+                {/* (displayData.map(
+                    (data) => {
+                        <article> {data.name}</article>
+                    }
+            } */}
+                ))
+            </button>
         </section>
     )
 }
