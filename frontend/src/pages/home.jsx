@@ -19,15 +19,20 @@ const Home = () => {
         //     console.log(error.response)
         // }
     }
+
+    const categrySelect = () => {
+        // when a category is selected
+        // the user will be redirected to the category page
+
+    }
     return (
         <section>
-            <button>
+            <button onClick={categorySelect()}>
                 {/* (displayData.map(
                     (data) => {
                         <article> {data.name}</article>
                     }
             } */}
-                ))
             </button>
         </section>
     )
