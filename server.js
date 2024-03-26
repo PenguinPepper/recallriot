@@ -1,10 +1,12 @@
-// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
+const flashcardRoutes = require('./routes/flashcard.routes');
+const categoryRoutes = require('./routes/category.routes');
+const tagRoutes = require('./routes/tag.routes');
 
 dotenv.config();
 
@@ -32,14 +34,21 @@ db.once('open', () => {
 });
 
 // Routes
-app.get('/', (req, res) => res.send('Hello HarmonyPlate!'));
+app.get('/', (req, res) => res.send('Hello RecallRiot!'));
 
 // Authentication routes
 app.use('/auth', authRoutes);
 
+// Flashcard routes
+app.use('/flashcards', flashcardRoutes);
 
+// Category routes
+app.use('/categories', categoryRoutes);
+
+// Tag routes
+app.use('/tags', tagRoutes);
 
 // Start server
-const PORT_NUMBER = PORT || 3003; 
+const PORT_NUMBER = PORT || 3003;
 app.listen(PORT_NUMBER, () => console.log(`Server running on port ${PORT_NUMBER}`));
 
