@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React from 'react';
-import './toggleButton.css';
 
 const ToggleButton = () => {
     // Create 2 buttons:
@@ -12,7 +11,7 @@ const ToggleButton = () => {
     return (
         <ul className='list-none p-0 mt-10 mb-0 ml-4 mr-0 after:table after:clear-both flex flex-row justify-center'>
             <li>
-                <a href='/login' className='p-2 px-12 bg-white cursor-pointer no-underline text-xl text-center text-gray-800 block float-left rounded-l-2xl'>log in</a>
+                <a href='/login' className='p-2 px-12 visited:bg-[#93C6D6] cursor-pointer no-underline text-xl text-center text-gray-800 block float-left rounded-l-2xl bg-[#82AEB1]'>log in</a>
             </li>
             <li>
                 <a href='/signup' className='p-2 px-12 bg-white cursor-pointer no-underline text-xl text-center text-gray-800 block float-left rounded-l-2xl'>sign up</a>
