@@ -24,10 +24,12 @@ const Signup = () => {
     }
 
     return (
-        <section className='display'>
-            <ToggleButton />
-            <section className='min-md:w-11/12'>
-                <p className='text-xl '>Create your Free Account</p>
+        <section className=''>
+            {/* <ToggleButton /> */}
+            <h1 className='text-3xl text-left pt-0 mt-0 pb-2'>Sign Up</h1>
+            <section className='display pt-2 bg-white'></section>
+            <section className='max-w-2xl bg-white'>
+                <p className='text-sm '>Create your Free Account</p>
 
                 <form className='flex flex-col' onSubmit={handleSubmit(SignUp)}>
                     <label htmlFor="userName" className='formLabel'>User Name:</label>
@@ -97,8 +99,9 @@ const Signup = () => {
                     {errors.confirmation && (
                         <span className="errorMessage">{errors.confirmation.message}</span>
                     )}
-
-                    <button type="submit" className='formButon bg-purple-300 w-1/2 justify-self-center'>Sign Up</button>
+                    <section className=''>
+                        <button type="submit" className='formButon bg-purple-300 w-1/2 justify-self-center'>Sign Up</button>
+                    </section>
                 </form>
                 <p>Or</p>
                 <p> Sign up with Google</p>
