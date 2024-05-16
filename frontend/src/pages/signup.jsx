@@ -24,10 +24,10 @@ const Signup = () => {
     }
 
     return (
-        <section className=''>
+        <section className='w-full h-screen bg-signup bg-cover bg-center'>
             {/* <ToggleButton /> */}
-            <h1 className='text-3xl text-left pt-0 mt-0 pb-2'>Sign Up</h1>
-            <section className='display pt-2 bg-white'></section>
+            <h1 className='text-3xl text-left pt-0'>Sign Up</h1>
+            <section className='display  bg-white'></section>
             <section className='max-w-2xl bg-white'>
                 <p className='text-sm '>Create your Free Account</p>
 
