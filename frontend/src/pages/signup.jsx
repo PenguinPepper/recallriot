@@ -24,14 +24,14 @@ const Signup = () => {
     }
 
     return (
-        <section className='w-full h-screen bg-signup bg-cover bg-center'>
+        <section className='w-full h-screen bg-signup bg-cover bg-center flex flex-col justify-center pl-8 pr-8'>
             {/* <ToggleButton /> */}
-            <h1 className='text-3xl text-left pt-0'>Sign Up</h1>
+            <h1 className='text-3xl text-left pl-2 pt-2 pb-4 max-w-2xl bg-white rounded-t-xl '>Sign Up</h1>
             <section className='display  bg-white'></section>
-            <section className='max-w-2xl bg-white'>
+            <section className='max-w-2xl bg-white rounded-b-xl p-4'>
                 <p className='text-sm '>Create your Free Account</p>
 
-                <form className='flex flex-col' onSubmit={handleSubmit(SignUp)}>
+                <form className='flex flex-col justify-self-center' onSubmit={handleSubmit(SignUp)}>
                     <label htmlFor="userName" className='formLabel'>User Name:</label>
                     <input type="text" id="userName" className='rounded bg-slate-200 border-none'
                         {...register('userName',
@@ -100,7 +100,7 @@ const Signup = () => {
                         <span className="errorMessage">{errors.confirmation.message}</span>
                     )}
                     <section className=''>
-                        <button type="submit" className='formButon bg-purple-300 w-1/2 justify-self-center'>Sign Up</button>
+                        <button type="submit" className='formButon bg-purple-300 w-1/2 justify-center'>Sign Up</button>
                     </section>
                 </form>
                 <p>Or</p>
