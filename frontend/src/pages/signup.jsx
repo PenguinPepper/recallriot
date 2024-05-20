@@ -99,7 +99,7 @@ const Signup = () => {
                     {errors.confirmation && (
                         <span className="errorMessage">{errors.confirmation.message}</span>
                     )}
-                    <section className=''>
+                    <section className='flex justify-center'>
                         <button type="submit" className='formButon bg-purple-300 w-1/2 justify-center'>Sign Up</button>
                     </section>
                 </form>
